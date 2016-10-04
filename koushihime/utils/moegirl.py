@@ -79,12 +79,9 @@ class MoegirlQuery(object):
         @side_effect self.request, iff response is not present
         @return bool
         """
-        cat = self.get_categories()
+        cats = self.get_categories()
         banned = u"Category:屏蔽更新姬推送的条目".encode('utf-8')
-        for i in range(len(cat)):
-            if cat[i] == banned:
-                return True
-        return False
+        return any(cat == banned in cats)
 
     def get_namespace(self):
         """
