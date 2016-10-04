@@ -8,13 +8,29 @@ from flask.ext.login import login_user, login_required, logout_user
 
 
 class Login(MethodView):
+    """
+    Login View
+    
+    @attrib form:LoginForm
+    """
     def __init__(self):
         self.form = LoginForm
 
     def get(self):
+        """
+        GET handler.
+        
+        @return 一个渲染好的登录页面
+        """
         return render_template('auth/login.html', form=self.form())
 
     def post(self):
+        """
+        POST handler.
+        
+        @post_param next 目标页面
+        @return 登录成功则重定向到 next 给定的目标或主页；否则给渲染好的登录页面
+        """
         form = self.form(request.form)
         if form.validate():
             email = form.email.data
@@ -31,9 +47,17 @@ class Login(MethodView):
 
 
 class Logout(MethodView):
+    """
+    退出登录
+    """
     decorators = [login_required]
 
     def get(self):
+        """
+        GET handler.
+        
+        @return 重定向到首页
+        """
         logout_user()
         flash(u"已登出")
         return redirect(url_for('main.index'))

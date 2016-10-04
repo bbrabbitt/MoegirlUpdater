@@ -2,13 +2,13 @@
 
 class Permission:
     """
-    使用位运算标记用户权限
+    使用位域标记用户权限
     每一位表示一种权限
     """
-    BLOCKED = 0x00
-    READ = 0x01
-    MANUAL_PUSH = 0x02
-    ADMINISTER = 0x80
+    BLOCKED = 0
+    READ = 1 << 0
+    MANUAL_PUSH = 1 << 1
+    ADMINISTER = 1 << 3  # unused
 
 
 class Operation:

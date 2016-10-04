@@ -28,7 +28,7 @@ manager.add_command("runserver", server)
 
 @manager.command
 def init():
-    "Initialize environment and database"
+    """Initialize environment and database"""
 
     print 'Initialize environment\n'
     pickle.dump({}, open('./environment', 'w'))
@@ -46,7 +46,7 @@ def init():
 
 @manager.command
 def reset():
-    "Reset app, remove database and reset environment"
+    """Reset app, remove database and reset environment"""
 
     sys.stdout.write("Do you want to clean the database? [Y/n]  ")
     result = None
@@ -63,7 +63,7 @@ def reset():
 @manager.option('-p', '--password', dest='password', help="Administrator's password", required=True)
 @manager.option('-e', '--email', dest='email', help="Administrator's email", required=True)
 def admin(email, password):
-    "Initialize administrator acount"
+    """Initialize administrator acount"""
 
     User(email=email, password=password, role_id=1, username="admin").save()
     print "Done"
@@ -72,7 +72,7 @@ def admin(email, password):
 @manager.option('-v', '--value', dest='value', help="Environment value", required=True)
 @manager.option('-k', '--key', dest='key', help="Environment key", required=True)
 def env(key, value):
-    "Set Environment"
+    """Set Environment"""
 
     from koushihime.utils import Env
     app_env = Env()
