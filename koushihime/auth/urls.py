@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-
+"""设置 URL 到 View 的对应规则"""
 from koushihime.auth import auth
 from views import Login, Logout
 

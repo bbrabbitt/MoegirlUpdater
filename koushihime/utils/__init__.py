@@ -19,6 +19,9 @@ def admin_required(func):
 
 
 class CRUDMixin(object):
+    """
+    @see https://flaskage.readthedocs.io/en/latest/database_design.html#the-crud-mixin
+    """
     def __repr__(self):
         return "<class: {0}, id: {1}>".format(self.__class__.__name__, self.id)
 

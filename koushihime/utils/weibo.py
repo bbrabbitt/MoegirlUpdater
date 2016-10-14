@@ -42,10 +42,10 @@ class APIError(StandardError):
 
 
 def _parse_json(s):
-    ' parse str into JsonDict '
+    '''parse str into JsonDict'''
 
     def _obj_hook(pairs):
-        ' convert json object to python object '
+        '''convert json object to python object'''
         o = JsonDict()
         for k, v in pairs.iteritems():
             o[str(k)] = v
@@ -54,7 +54,7 @@ def _parse_json(s):
 
 
 class JsonDict(dict):
-    ' general json object that allows attributes to be bound to and also behaves like a dict '
+    '''general json object that allows attributes to be bound to and also behaves like a dict'''
 
     def __getattr__(self, attr):
         try:
@@ -91,7 +91,7 @@ def _encode_params(**kw):
 
 
 def _encode_multipart(**kw):
-    ' build a multipart/form-data body with randomly generated boundary '
+    '''build a multipart/form-data body with randomly generated boundary'''
     boundary = '----------%s' % hex(int(time.time() * 1000))
     data = []
     for k, v in kw.iteritems():
